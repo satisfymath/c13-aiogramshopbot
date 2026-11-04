@@ -80,7 +80,7 @@ async def support(message: Message, session: AsyncSession, language: Language):
 
 
 @main_router.message(F.text.in_(KeyboardButton.get_localized_set(KeyboardButton.REVIEWS)), IsUserExistFilter())
-async def support(message: Message, session: AsyncSession, language: Language):
+async def reviews(message: Message, session: AsyncSession, language: Language):
     media, kb_builder = await ReviewService.get_reviews_paginated(None, session, language)
     await NotificationService.answer_media(message, media, reply_markup=kb_builder.as_markup())
 
@@ -123,7 +123,7 @@ async def banned_message(message: Message, language: Language):
 
 
 @main_router.callback_query(IsUserBannedFilter())
-async def banned_message(callback: CallbackQuery, language: Language):
+async def banned_callback(callback: CallbackQuery, language: Language):
     banned_text = get_text(language, BotEntity.COMMON, "banned")
     if callback.message.text:
         await callback.message.edit_text(banned_text)

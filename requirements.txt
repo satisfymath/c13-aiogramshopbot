@@ -8,7 +8,7 @@ itsdangerous==2.2.0
 kryptoexpress-sdk==0.1.1
 matplotlib==3.10.7
 passlib==1.7.4
-pillow==12.1.0
+pillow==13.0.0
 pydantic==2.9.2
 pyngrok==7.2.1
 python-dotenv==1.0.1
